@@ -1,2 +1,8 @@
 <h1>Welcome to {{hotelName}}</h1>
-<div [innerText]="numberOfRooms"></div>
+<div [hidden]="hideRooms">
+  Number of Rooms:
+  <div [innerText]="numberOfRooms"></div>
+  <!-- same as document.getElementBtId('numberBtRooms').innerText = numberOfRooms -->
+</div>
+
+<button (click)="toggle()">Toggle</button>

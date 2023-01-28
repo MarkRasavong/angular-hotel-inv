@@ -9,4 +9,9 @@ export class RoomsComponent {
   //interpolation binding syntax
   hotelName = 'Hilton Hotel';
   numberOfRooms = 10;
+  hideRooms = false;
+
+  toggle() {
+    this.hideRooms = !this.hideRooms;
+  }
 }
