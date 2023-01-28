@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { RoomsComponent } from './rooms/rooms.component';
 // ANGULAR EVERYTHING is a class. At minium one module to run the application
 
 /* 
@@ -12,7 +13,7 @@ directives, pipes goes to declarations array
 
 //NgModule decorator: mods the class => gives metadata to class
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, RoomsComponent],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
   //which component will be rendered first
