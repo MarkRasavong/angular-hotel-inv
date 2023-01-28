@@ -8,4 +8,5 @@ import { Component } from '@angular/core';
 export class RoomsComponent {
   //interpolation binding syntax
   hotelName = 'Hilton Hotel';
+  numberOfRooms = 10;
 }
