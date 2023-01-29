@@ -2,7 +2,7 @@
 <!-- Property Binding-->
 <div [hidden]="hideRooms">
   Number of Rooms:
-  <div [innerText]="numberOfRooms"></div>
+  <div [ngStyle]="{'color': rooms.availableRooms ? 'blue' : 'red'}" [innerText]="numberOfRooms"></div>
   <!-- same as document.getElementBtId('numberBtRooms').innerText = numberOfRooms -->
 </div>
 
