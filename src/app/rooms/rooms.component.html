@@ -23,7 +23,7 @@
     </tr>
     <tr [ngClass]="e ? 'even' : 'odd'" *ngFor="let room of roomList; let e = even; let o = odd let i = index">
       <!-- loops each object -->
-      <td>{{ i }}</td>
+      <td>{{ i | percent }}</td>
       <td>{{e ? "Even" : "Odd"}}</td>
       <td>{{ room.roomNumber }}</td>
       <td>{{ room.roomType }}</td>
