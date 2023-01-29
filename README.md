@@ -95,3 +95,55 @@ _component.css_
 ```
 <div [ngStyle]="{'color': rooms.availableRooms ? 'blue' : 'red'}" [innerText]="numberOfRooms"></div>
 ```
+
+## Pipes
+
+1. Use for data transformation
+2. They don't change the actual object
+_use documentation for pipe types_ <br>
+**Built-in Pipes**
+
+⭐ Date Pipe: 
+```
+date (give default date formate)
+date: 'short'
+```
+⭐ Casing Pipes: 
+```
+| lowercase
+| uppercase
+| titlecase
+```
+⭐ Currency: 
+```
+currency (default @ USD)
+currency: 'EUR'
+```
+⭐ Percent Pipe: 
+```
+| percent
+```
+_1 = 100%, so use decimals for anything below 100%_
+⭐ NumberPipe: 
+```
+date (give default date formate)
+date: 'short'
+```
+⭐ Slice Pipe: _Not best for slicing large sets of data, rely using services_
+```
+<tr [ngClass]="e ? 'even' : 'odd'"
+      *ngFor="let room of roomList | slice: 0: 4; let e = even; let o = odd let i = index">
+```
+_grabs items from idx 0 - 3_
+⭐ JSON Pipe: _Not best for production UI, use for developmental purposes only_
+```
+{{ roomList | json }}
+```
+_displays a stringfy version of the object roomList_
+⭐ Number Pipe: _displays numbers in a specific formate_
+```
+{{ room.rating | number : '1.0-0'}}
+{{ room.rating | number : '1.1-2'}}
+{{ room.rating | number : '1.0-0' : 'en-us' }}
+```
+``min digit - max digit to display : locale (displays placement of points and commas dependent on part of world)``
