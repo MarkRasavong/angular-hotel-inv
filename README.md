@@ -2,6 +2,30 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.3. First web app built with Angular and learning it's principles.
 
+## Introduction
+
+🌟 creating a component
+🌟 rendering view to app (hinv-rooms) ``app.component.html``
+🌟 Interpolation binding: 
+```
+<div [innerText]="numberOfRooms"></div>
+<!-- same as document.getElementBtId('numberBtRooms').innerText = numberOfRooms -->
+```
+🌟 Property binding:
+```
+<div [hidden]="hideRooms">
+  Number of Rooms:
+  <div [innerText]="numberOfRooms"></div>
+  <!-- same as document.getElementBtId('numberBtRooms').innerText = numberOfRooms -->
+</div>
+```
+🌟 Event binding
+```
+<button (click)="toggle()">Toggle</button>
+```
+
+⭐ component.ts => holds all properties, values, and methods that are being rendered in that component.html
+
 ## Directives
 
 1. Are use to change the behaviour and appearance of DOM element
