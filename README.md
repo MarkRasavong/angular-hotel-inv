@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.1.3. First web app built with Angular and learning it's principles.
 
-##Directives
+## Directives
 
 1. Are use to change the behaviour and appearance of DOM element
 2. Can implement all lifecycle hooks
