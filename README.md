@@ -4,8 +4,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Introduction
 
-🌟 creating a component
-🌟 rendering view to app (hinv-rooms) ``app.component.html``
+🌟 creating a component <br>
+🌟 rendering view to app (hinv-rooms) ``app.component.html`` <br>
 🌟 Interpolation binding: 
 ```
 <div [innerText]="numberOfRooms"></div>
@@ -32,7 +32,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 2. Can implement all lifecycle hooks
 3. Contains 'logic'
 
-⭐_the difference between a structural & attribute built in directives_
+⭐_the difference between a structural & attribute built in directives_ <br>
 ⭐``*ngIf`` -  a HTML attribute: If Statement for a HTML Element to be displayed
 ```
 <div *ngIf="rooms?.availableRooms != undefined && rooms.availableRooms > 0">
