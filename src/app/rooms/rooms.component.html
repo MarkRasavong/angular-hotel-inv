@@ -8,6 +8,9 @@
 
 {{ rooms?.availableRooms ?? 'No Rooms' }}
 
+<!-- converts [object object] || arrays and parses them correctly ONLY FOR DEV-->
+{{ roomList | json }}
+
 <div *ngIf="rooms.availableRooms > 0">
   Rooms List:
   <!-- {{ roomList }} -->
