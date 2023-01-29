@@ -23,9 +23,10 @@
       <th>Room Price</th>
       <th>Room Amenities</th>
       <th>Check-in Time</th>
+      <th>Ratings</th>
     </tr>
     <tr [ngClass]="e ? 'even' : 'odd'"
-      *ngFor="let room of roomList | slice: 1: 2; let e = even; let o = odd let i = index">
+      *ngFor="let room of roomList | slice: 0: 4; let e = even; let o = odd let i = index">
       <!-- loops each object -->
       <td>{{ i | percent }}</td>
       <td>{{e ? "Even" : "Odd"}}</td>
@@ -34,6 +35,7 @@
       <td>{{ room.price | currency: 'EUR' }}</td>
       <td>{{ room.amenities | titlecase }}</td>
       <td>{{ room.checkinTime | date : 'short' }}</td>
+      <td>{{ room.rating | number : '1.0-0'}}</td>
     </tr>
   </table>
 </div>
