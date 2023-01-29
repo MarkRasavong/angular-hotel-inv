@@ -24,7 +24,8 @@
       <th>Room Amenities</th>
       <th>Check-in Time</th>
     </tr>
-    <tr [ngClass]="e ? 'even' : 'odd'" *ngFor="let room of roomList; let e = even; let o = odd let i = index">
+    <tr [ngClass]="e ? 'even' : 'odd'"
+      *ngFor="let room of roomList | slice: 1: 2; let e = even; let o = odd let i = index">
       <!-- loops each object -->
       <td>{{ i | percent }}</td>
       <td>{{e ? "Even" : "Odd"}}</td>
