@@ -7,6 +7,7 @@ import { Room, RoomList } from './rooms';
   styleUrls: ['./rooms.component.scss'],
 })
 export class RoomsComponent implements OnInit {
+  constructor() {}
   //interpolation binding syntax
   hotelName = 'Hilton Hotel';
   numberOfRooms = 10;
@@ -23,8 +24,6 @@ export class RoomsComponent implements OnInit {
   toggle() {
     this.hideRooms = !this.hideRooms;
   }
-
-  constructor() {}
 
   ngOnInit(): void {
     this.roomList = [
