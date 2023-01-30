@@ -147,3 +147,69 @@ _displays a stringfy version of the object roomList_
 {{ room.rating | number : '1.0-0' : 'en-us' }}
 ```
 ``min digit - max digit to display : locale (displays placement of points and commas dependent on part of world)``
+
+## Lifecycle and Component Communication
+
+1. Component Commnication: where two or more componens needs to interact
+2. Lifecycle will end the component is destroyed
+
+⭐``ngOnInit``
+_A callback method that is invoked immediately after the default change detector has checked the directive's data-bound properties for the first time, and before any of the view or content children have been checked. It is invoked only once when the directive is instantiated._
+_dummy form: ngOnInit is used in Angular to perform component initialization, particularly to run logic when the component is created. It's a lifecycle hook called by Angular immediately after constructing a component._
+_In simple terms, the initial state in React serves a similar purpose as ngOnInit in Angular. Both are used to perform initial setup work when a component is created. The initial state in React is an object that represents the initial values of the component's state, which can be set in the constructor or when the component is created. In Angular, ngOnInit is a lifecycle hook that is called after a component is constructed, and it can be used to perform any necessary setup work for the component._
+```
+class _________ implement OnInit {
+
+  ngOnInit() {
+    /*
+    inital data
+    */
+  }
+
+}
+```
+⭐``@Input`` Component Comunication (parent to child)
+_allows giving 'attribute(s)' to a component when using it through component.html_
+```
+@Component({
+  selector: 'hinv-rooms-list',
+  templateUrl: './rooms-list.component.html',
+  styleUrls: ['./rooms-list.component.scss'],
+})
+
+export class RoomsListComponent implements OnInit {
+  /* 'rooms' will become an attribute of hinv-rooms-list */
+  @Input() rooms: RoomList[] = [];
+
+<hinv-rooms-list [rooms]="roomList"></hinv-rooms-list>
+```
+_``@Input`` in Angular is a decorator used to bind a property of a child component to a value passed from a parent component. It allows the parent component to pass data and values to the child component, making the child component more reusable and flexible._
+
+⭐``@Output`` Component Comunication (child to parent)
+_ A decorator that lets the child component communicates with the parent component_
+CHILD.COMPONENT.HTML
+```
+<button class="btn btn-primary" (click)="selectRoom(room)">Select</button>
+```
+CHILD CLASS
+```
+ /* What kind of data we need to send to the parent - event */
+@Output() selectedRoom = new EventEmitter<RoomList>();
+   
+selectRoom(room: RoomList) {
+//gives data back to parent
+    this.selectedRoom.emit(room);
+}
+```
+PARENT.COMPONENT.HTML
+```
+<hinv-rooms-list [rooms]="roomList" (selectedRoom)="selectRoom($event)"></hinv-rooms-list>
+```
+PARENT CLASS
+```
+selectedRoom!: RoomList;
+
+selectRoom(room: RoomList) {
+    this.selectedRoom = room;
+  }
+```
