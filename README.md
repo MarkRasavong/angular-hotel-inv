@@ -186,7 +186,7 @@ export class RoomsListComponent implements OnInit {
 _``@Input`` in Angular is a decorator used to bind a property of a child component to a value passed from a parent component. It allows the parent component to pass data and values to the child component, making the child component more reusable and flexible._
 
 ⭐``@Output`` Component Comunication (child to parent)
-_ A decorator that lets the child component communicates with the parent component_
+_ A decorator that lets the child component communicates with the parent component_ <br>
 CHILD.COMPONENT.HTML
 ```
 <button class="btn btn-primary" (click)="selectRoom(room)">Select</button>
