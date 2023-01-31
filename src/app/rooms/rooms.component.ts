@@ -1,9 +1,11 @@
 import {
+  AfterViewInit,
   ChangeDetectionStrategy,
   Component,
-  DoCheck,
   OnInit,
+  ViewChild,
 } from '@angular/core';
+import { HeaderComponent } from '../header/header.component';
 import { Room, RoomList } from './rooms';
 
 @Component({
@@ -12,7 +14,7 @@ import { Room, RoomList } from './rooms';
   styleUrls: ['./rooms.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RoomsComponent implements OnInit {
+export class RoomsComponent implements OnInit, AfterViewInit {
   constructor() {}
   //interpolation binding syntax
   hotelName = 'Hilton Hotel';
@@ -29,6 +31,10 @@ export class RoomsComponent implements OnInit {
   title = 'Room List';
 
   roomList: RoomList[] = [];
+
+  //creates a new instance of this component
+  @ViewChild(HeaderComponent, { static: true })
+  headerComponent!: HeaderComponent;
 
   toggle() {
     this.hideRooms = !this.hideRooms;
@@ -89,4 +95,6 @@ export class RoomsComponent implements OnInit {
       },
     ];
   }
+
+  ngAfterViewInit(): void {}
 }
