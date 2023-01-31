@@ -4,7 +4,9 @@ import {
   ChangeDetectionStrategy,
   Component,
   OnInit,
+  QueryList,
   ViewChild,
+  ViewChildren,
 } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
 import { Room, RoomList } from './rooms';
@@ -36,8 +38,12 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
   //creates a new instance of this component,
   //static: true => this component is safe to use OnInIt
   // if there is asynchronous rendering of components especially at OnInIt
+  //view child will always have access to the first istance on component.html
   @ViewChild(HeaderComponent)
   headerComponent!: HeaderComponent;
+
+  @ViewChildren(HeaderComponent)
+  headerChildrenComponent!: QueryList<HeaderComponent>;
 
   toggle() {
     this.hideRooms = !this.hideRooms;
@@ -50,6 +56,7 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
 
   ngAfterViewInit(): void {
     this.headerComponent.title = 'Rooms View';
+    /*this.headerChildrenComponent  use cases displaying records of multiple children=> */
   }
 
   ngAfterViewChecked(): void {}
