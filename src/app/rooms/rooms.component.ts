@@ -1,4 +1,5 @@
 import {
+  AfterViewChecked,
   AfterViewInit,
   ChangeDetectionStrategy,
   Component,
@@ -14,7 +15,7 @@ import { Room, RoomList } from './rooms';
   styleUrls: ['./rooms.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RoomsComponent implements OnInit, AfterViewInit {
+export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
   constructor() {}
   //interpolation binding syntax
   hotelName = 'Hilton Hotel';
@@ -32,8 +33,10 @@ export class RoomsComponent implements OnInit, AfterViewInit {
 
   roomList: RoomList[] = [];
 
-  //creates a new instance of this component
-  @ViewChild(HeaderComponent, { static: true })
+  //creates a new instance of this component,
+  //static: true => this component is safe to use OnInIt
+  // if there is asynchronous rendering of components especially at OnInIt
+  @ViewChild(HeaderComponent)
   headerComponent!: HeaderComponent;
 
   toggle() {
@@ -44,6 +47,12 @@ export class RoomsComponent implements OnInit, AfterViewInit {
   selectRoom(room: RoomList) {
     this.selectedRoom = room;
   }
+
+  ngAfterViewInit(): void {
+    this.headerComponent.title = 'Rooms View';
+  }
+
+  ngAfterViewChecked(): void {}
 
   addRoom() {
     const room: RoomList = {
@@ -95,6 +104,4 @@ export class RoomsComponent implements OnInit, AfterViewInit {
       },
     ];
   }
-
-  ngAfterViewInit(): void {}
 }
