@@ -187,6 +187,7 @@ _``@Input`` in Angular is a decorator used to bind a property of a child compone
 
 ⭐``@Output`` Component Comunication (child to parent)
 _ A decorator that lets the child component communicates with the parent component_ <br>
+_@Output in Angular is a decorator that allows a component to share data with its parent component. It enables a child component to emit an event that can be listened for by its parent component, effectively sending data from the child to the parent. This allows for communication between components and is used for passing data from a child component to its parent component. The @Output decorator is applied to a property in the child component class and is associated with an event that can be listened for in the parent component._ <br>
 CHILD.COMPONENT.HTML
 ```
 <button class="btn btn-primary" (click)="selectRoom(room)">Select</button>
@@ -213,3 +214,7 @@ selectRoom(room: RoomList) {
     this.selectedRoom = room;
   }
 ```
+⭐``ChangeDetectionStrategy.OnPush``
+_In simple terms, ChangeDetectionStrategy.OnPush in Angular is used to optimize component performance by limiting the amount of component re-rendering. By default, Angular performs change detection on all components every time there is a change in any component, causing it to re-render all affected components. ChangeDetectionStrategy.OnPush optimizes this process by only triggering change detection in a component when its input properties change, rather than every time there is a change in any component. This can lead to improved performance in complex applications with many components, as it reduces the number of unnecessary component re-renders._
+_keep in mind of immunability! Do not modify! Create another instance (via spread)_
+_You can achieve not modifying any data internally in the component by using ``@Input`` && ``@Output``_
