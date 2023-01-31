@@ -1,5 +1,11 @@
 //Where all views are loaded
-import { Component } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ViewChild,
+  ViewContainerRef,
+} from '@angular/core';
+import { RoomsComponent } from './rooms/rooms.component';
 
 @Component({
   //app-root tag @ index.html
@@ -9,7 +15,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
   //styles: [`h1 { color: red; }`],
 })
-export class AppComponent {
+export class AppComponent implements AfterViewInit {
   title = 'hotelInventoryApp';
   /* role = 'Admin'; */
+  @ViewChild('user', { read: ViewContainerRef }) vcr!: ViewContainerRef;
+
+  ngAfterViewInit() {
+    const componentRef = this.vcr.createComponent(RoomsComponent);
+    //componentRef.instance.numberOfRooms = 50;
+  }
 }
