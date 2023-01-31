@@ -218,3 +218,19 @@ selectRoom(room: RoomList) {
 _In simple terms, ChangeDetectionStrategy.OnPush in Angular is used to optimize component performance by limiting the amount of component re-rendering. By default, Angular performs change detection on all components every time there is a change in any component, causing it to re-render all affected components. ChangeDetectionStrategy.OnPush optimizes this process by only triggering change detection in a component when its input properties change, rather than every time there is a change in any component. This can lead to improved performance in complex applications with many components, as it reduces the number of unnecessary component re-renders._
 _keep in mind of immunability! Do not modify! Create another instance (via spread)_
 _You can achieve not modifying any data internally in the component by using ``@Input`` && ``@Output``_
+<br>
+⭐``ngOnChange``
+_needed imports_
+```
+export class RoomsListComponent implements OnInit, OnChanges {
+//an @Input and the values recieve a new instance or value of it
+
+*use cases => modify properties
+
+ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
+    if (changes['title']) {
+      this.title = changes['title'].currentValue.toUpperCase();
+    }
+  }
+```
