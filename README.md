@@ -187,6 +187,7 @@ _``@Input`` in Angular is a decorator used to bind a property of a child compone
 
 ⭐``@Output`` Component Comunication (child to parent)
 _ A decorator that lets the child component communicates with the parent component_ <br>
+_@Output in Angular is a decorator that allows a component to share data with its parent component. It enables a child component to emit an event that can be listened for by its parent component, effectively sending data from the child to the parent. This allows for communication between components and is used for passing data from a child component to its parent component. The @Output decorator is applied to a property in the child component class and is associated with an event that can be listened for in the parent component._ <br>
 CHILD.COMPONENT.HTML
 ```
 <button class="btn btn-primary" (click)="selectRoom(room)">Select</button>
