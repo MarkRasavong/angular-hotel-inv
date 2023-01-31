@@ -12,7 +12,7 @@ import { Room, RoomList } from './rooms';
   styleUrls: ['./rooms.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RoomsComponent implements OnInit, DoCheck {
+export class RoomsComponent implements OnInit {
   constructor() {}
   //interpolation binding syntax
   hotelName = 'Hilton Hotel';
@@ -29,15 +29,6 @@ export class RoomsComponent implements OnInit, DoCheck {
   title = 'Room List';
 
   roomList: RoomList[] = [];
-
-  ngDoCheck() {
-    /* 
-    calls every time an event occurs and listens through out the application
-    USE CASES => if you want to see if there's a component is getting a change outside of Angular 
-    this is costly!
-    Do not implmenent ngDoCheck & DoCheck on the same component => DoCHeck = App / ngDoCheck = Input values of component
-    */
-  }
 
   toggle() {
     this.hideRooms = !this.hideRooms;
