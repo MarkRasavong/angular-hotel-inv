@@ -2,6 +2,8 @@
 import {
   AfterViewInit,
   Component,
+  ElementRef,
+  OnInit,
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
@@ -15,13 +17,20 @@ import { RoomsComponent } from './rooms/rooms.component';
   styleUrls: ['./app.component.scss'],
   //styles: [`h1 { color: red; }`],
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements OnInit {
   title = 'hotelInventoryApp';
   /* role = 'Admin'; */
-  @ViewChild('user', { read: ViewContainerRef }) vcr!: ViewContainerRef;
+  /*   @ViewChild('user', { read: ViewContainerRef }) vcr!: ViewContainerRef;
 
   ngAfterViewInit() {
     const componentRef = this.vcr.createComponent(RoomsComponent);
     //componentRef.instance.numberOfRooms = 50;
+  } */
+
+  /* static: true => this div is not async */
+  @ViewChild('name', { static: true }) name!: ElementRef;
+
+  ngOnInit() {
+    this.name.nativeElement.innerText = 'Seven Seasons';
   }
 }
