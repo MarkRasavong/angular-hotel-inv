@@ -19,9 +19,9 @@
   <button (click)="addRoom()">Add Room</button>
 </div>
 
-<div *ngIf="rooms.availableRooms > 0">
+<div *ngIf="hideRooms">
   <!-- $event => event recieved from child component -->
-  <hinv-rooms-list [rooms]="roomList" [title]="title" (selectedRoom)="selectRoom($event)"></hinv-rooms-list>
+  <hinv-rooms-list [rooms]=" roomList" [title]="title" (selectedRoom)="selectRoom($event)"></hinv-rooms-list>
 </div>
 
 <button (click)="toggle()">Toggle</button>

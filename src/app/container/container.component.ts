@@ -22,5 +22,5 @@ export class ContainerComponent implements OnInit, AfterContentInit {
     this.employee.empName = 'Ric Thicc';
   }
 
-  /* prefer to use input/output but view is ok as well */
+  /* prefer to use input/output but view is ok as well - ngAfterContentInit is rare */
 }

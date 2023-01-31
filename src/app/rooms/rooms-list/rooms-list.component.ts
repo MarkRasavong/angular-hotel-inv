@@ -6,6 +6,7 @@ import {
   Output,
   OnChanges,
   SimpleChanges,
+  OnDestroy,
 } from '@angular/core';
 import { RoomList } from '../rooms';
 
@@ -14,7 +15,7 @@ import { RoomList } from '../rooms';
   templateUrl: './rooms-list.component.html',
   styleUrls: ['./rooms-list.component.scss'],
 })
-export class RoomsListComponent implements OnInit, OnChanges {
+export class RoomsListComponent implements OnInit, OnChanges, OnDestroy {
   /* 'rooms' will become an attribute of hinv-rooms-list */
   @Input() rooms: RoomList[] = [];
   @Input() title: string = '';
@@ -31,6 +32,9 @@ export class RoomsListComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {}
+
+  /* useCases: destroying data after consuming (subscpritions), localstorage */
+  ngOnDestroy() {}
 
   selectRoom(room: RoomList) {
     //gives data back to parent
