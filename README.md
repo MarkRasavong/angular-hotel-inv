@@ -234,3 +234,96 @@ ngOnChanges(changes: SimpleChanges): void {
     }
   }
 ```
+⭐``DoCheck`` && ``ngDoCheck``
+``export class RoomsComponent implements OnInit, DoCheck {``
+``ngDoCheck() {}``
+- ``ngDoCheck`` will listen throughout the application every time an event occurs
+- Using these lifecycles are costly!!
+- Do not implement ``ngDoCheck`` && ``DoCheck`` on the same component!
+- Use ``DoCheck`` for the entire application
+- Use ``ngDoCheck`` for input values of a component <br>
+
+⭐``@ViewChild`` && ``ngAfterViewInit()`` && ``ngAfterViewChecked()``
+```
+export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked
+
+@ViewChild(HeaderComponent, { static: true })
+headerComponent!: HeaderComponent;
+
+ngAfterViewInit(): void {
+    this.headerComponent.title = 'Rooms View';
+  }
+
+ngAfterViewChecked(): void {}
+```
+_``@ViewChild`` in Angular is a decorator that allows a component to access a child component, directive, or DOM element. It is used to obtain a reference to a child component or DOM element within the template of a component. By using the ``@ViewChild`` decorator, a component can access the properties and methods of the child component or DOM element, enabling communication between the parent and child components. It can be used to implement parent-child communication, such as passing data from parent to child or calling methods on the child component. The ``@ViewChild`` decorator can be applied to a property in the component's class and is initialized in the component's ngAfterViewInit lifecycle hook._ <br>
+_ngAfterViewInit in Angular is a lifecycle hook that is called after Angular has finished initializing a component's view and child views. It is called once the component's view and child views have been fully created and initialized, and any child components have been initialized. The ngAfterViewInit method is a good place to perform any additional setup work that is required for the component, such as accessing child components using the ``@ViewChild`` decorator, or making API calls based on the component's state or input properties. The ngAfterViewInit hook is called after the component's constructor, ngOnInit and the component's view and child views have been fully created and initialized._ <br>
+- Depending of the component is async => you may want to use the ``static`` property to see the view. <br>
+
+⭐``@ViewChild`` to render a component
+
+1. Create a template reference: ``<ng-template #refName></ng-template>`` to ``COMPONENT_NAME.component.html``
+2. At component.ts => create a view child targeting the refName: ``@ViewChild('user', { read: ViewContainerRef }) vcr!: ViewContainerRef;``
+3. Use class implements ``AfterViewInit`` & make ``ngAfterViewInit(){}`` method
+
+```
+ngAfterViewInit() {
+    const componentRef = this.vcr.createComponent(RoomsComponent);
+    //componentRef.instance.numberOfRooms = 50;
+  }
+```
+
+⭐``@ViewChild`` to render a HTML Element
+
+1. Create a template reference: ``<div #name></div>`` to ``COMPONENT_NAME.component.html``
+2. Insure class implements OnInit
+3. At component.ts => create a view child targeting the refName: ``@ViewChild('name', { static: true }) name!: ElementRef;``
+```
+/* static: true => this div is not async */
+@ViewChild('name', { static: true }) name!: ElementRef;
+
+ngOnInit() {
+    this.name.nativeElement.innerText = 'Seven Seasons';
+  }
+```
+
+⭐``@ViewChildren`` 
+- Everytime you have multiple  custom "angular html elements" it will only render just one when using ``@ViewChild``
+```
+@ViewChildren(HeaderComponent)
+  headerChildrenComponent!: QueryList<HeaderComponent>;
+
+ngAfterViewInit(): void {
+    this.headerComponent.title = 'Rooms View';
+    /*this.headerChildrenComponent  use cases displaying records of multiple children=> */
+  }
+```
+
+⭐``ng-content`` && ``@ContentChild`` && ``ngAfterContentInit``
+```
+``@Component.html``
+<!-- defines sequence of components should render -->
+<ng-content select="hinv-employee"></ng-content>
+<ng-content></ng-content> <!-- content should be provided by Parent -->
+<ng-content select="hinv-rooms"></ng-content>
+
+``@Component.ts``
+export class ContainerComponent implements OnInit, AfterContentInit {
+  @ContentChild(EmployeeComponent) employee!: EmployeeComponent;
+
+ngAfterContentInit(): void {
+    this.employee.empName = 'Ric Thicc';
+  }
+
+}
+```
+_Yes, in most cases you would use ``@ContentChild`` in Angular when you want to access or interact with content that is projected into a component using the ng-content directive. The ``@ContentChild`` decorator provides a way for the component to access the projected content and access its properties, methods, and state. Without the ``@ContentChild`` decorator, a component would not be able to access the projected content. However, it is important to note that ``@ContentChild`` is not required for every use case that involves projected content. There may be scenarios where you don't need to access the projected content from the component, in which case you wouldn't need to use ``@ContentChild``._ <br>
+- prefer to use input/output but view is ok as well
+- ngAfterContentInit is a rare use
+- When you put the component.html in another component.html, it will always render in that order.
+
+⭐``OnDestroy`` && ``ngOnDestroy()``
+
+- useCases: destroying data after consuming (subscpritions), localstorage <br>
+
+## Dependency Injection
