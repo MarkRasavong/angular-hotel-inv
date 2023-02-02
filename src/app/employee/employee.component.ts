@@ -7,14 +7,14 @@ import { RoomsService } from '../rooms/services/rooms.service';
   styleUrls: ['./employee.component.scss'],
   //first RoomsService is being initialized at global scope (Rooms - component)
   //And second is at this component
-  providers: [RoomsService], //provides service at component level
+  //providers: [RoomsService], //provides service at component level
 })
 export class EmployeeComponent implements OnInit {
   empName: string = 'Jon';
 
   //@Self => it should be available at a certain level
   // if it's available through providers only => else use the nullInjector
-  constructor(@Self() private roomsService: RoomsService) {}
+  constructor(private roomsService: RoomsService) {}
 
   ngOnInit() {}
 }
