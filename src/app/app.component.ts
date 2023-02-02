@@ -4,9 +4,11 @@ import {
   Component,
   ElementRef,
   OnInit,
+  Optional,
   ViewChild,
   ViewContainerRef,
 } from '@angular/core';
+import { LoggerService } from './logger.service';
 import { RoomsComponent } from './rooms/rooms.component';
 
 @Component({
@@ -30,7 +32,12 @@ export class AppComponent implements OnInit {
   /* static: true => this div is not async */
   @ViewChild('name', { static: true }) name!: ElementRef;
 
+  //@Optional use this service only for development
+  //It will not throw errors if it doesn't exist in the app context
+  constructor(@Optional() private loggerService: LoggerService) {}
+
   ngOnInit() {
+    this.loggerService?.log('AppComponent.ngOnInit()');
     this.name.nativeElement.innerText = 'Seven Seasons';
   }
 }

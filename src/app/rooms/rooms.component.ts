@@ -5,6 +5,7 @@ import {
   Component,
   OnInit,
   QueryList,
+  SkipSelf,
   ViewChild,
   ViewChildren,
 } from '@angular/core';
@@ -23,7 +24,7 @@ export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
   // best practice to make services private
   // the component should not get data or any api calls, etx => Always use services
   // If there is a service provider, no DI will be utilized
-  constructor(private roomsService: RoomsService) {}
+  constructor(@SkipSelf() private roomsService: RoomsService) {}
 
   //interpolation binding syntax
   hotelName = 'Hilton Hotel';
