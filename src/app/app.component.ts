@@ -1,6 +1,7 @@
 //Where all views are loaded
 import {
   AfterViewInit,
+  Inject,
   Component,
   ElementRef,
   OnInit,
@@ -10,6 +11,7 @@ import {
 } from '@angular/core';
 import { LoggerService } from './logger.service';
 import { RoomsComponent } from './rooms/rooms.component';
+import { localStorageToken } from './localstorage.token';
 
 @Component({
   //app-root tag @ index.html
@@ -34,10 +36,14 @@ export class AppComponent implements OnInit {
 
   //@Optional use this service only for development
   //It will not throw errors if it doesn't exist in the app context
-  constructor(@Optional() private loggerService: LoggerService) {}
+  constructor(
+    @Optional() private loggerService: LoggerService,
+    @Inject(localStorageToken) private localStorage: Storage
+  ) {}
 
   ngOnInit() {
     this.loggerService?.log('AppComponent.ngOnInit()');
     this.name.nativeElement.innerText = 'Seven Seasons';
+    this.localStorage.setItem('name', 'Barceló Hotel');
   }
 }
