@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Self } from '@angular/core';
 import { RoomsService } from '../rooms/services/rooms.service';
 
 @Component({
@@ -12,7 +12,9 @@ import { RoomsService } from '../rooms/services/rooms.service';
 export class EmployeeComponent implements OnInit {
   empName: string = 'Jon';
 
-  constructor(private roomsService: RoomsService) {}
+  //@Self => it should be available at a certain level
+  // if it's available through providers only => else use the nullInjector
+  constructor(@Self() private roomsService: RoomsService) {}
 
   ngOnInit() {}
 }
