@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { RoomList } from '../rooms';
 
 @Injectable({
+  //root registered under app.module.ts
+  //adds the code when it is bundled to production, it will also deleted if it's not used
+  // get single instance of service
   providedIn: 'root',
 })
 export class RoomsService {
@@ -38,7 +41,9 @@ export class RoomsService {
     },
   ];
 
-  constructor() {}
+  constructor() {
+    console.log('Rooms Service initalized');
+  }
 
   getRooms() {
     return this.roomList;

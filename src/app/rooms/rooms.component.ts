@@ -19,9 +19,10 @@ import { RoomsService } from './services/rooms.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RoomsComponent implements OnInit, AfterViewInit, AfterViewChecked {
-  //DI is a design pattern which can be institated throughout the app
+  // DI is a design pattern which can be institated throughout the app
   // best practice to make services private
   // the component should not get data or any api calls, etx => Always use services
+  // If there is a service provider, no DI will be utilized
   constructor(private roomsService: RoomsService) {}
 
   //interpolation binding syntax
