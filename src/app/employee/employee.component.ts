@@ -7,7 +7,7 @@ import { RoomsService } from '../rooms/services/rooms.service';
   styleUrls: ['./employee.component.scss'],
   //first RoomsService is being initialized at global scope (Rooms - component)
   //And second is at this component
-  providers: [RoomsService],
+  providers: [RoomsService], //provides service at component level
 })
 export class EmployeeComponent implements OnInit {
   empName: string = 'Jon';
